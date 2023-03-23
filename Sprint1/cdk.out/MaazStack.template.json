@@ -1,0 +1,127 @@
+{
+ "Resources": {
+  "HelloLambdaServiceRoleE071F162": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "cohort",
+      "Value": "Sirius"
+     },
+     {
+      "Key": "name",
+      "Value": "Maaz Khattak"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MaazStack/HelloLambda/ServiceRole/Resource"
+   }
+  },
+  "HelloLambda3D9C82D6": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-315997497220-us-east-2",
+     "S3Key": "fa6d09742d44640504c0f5a40c1cc4766831f280b2226e8149cd0a62da988818.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "HelloLambdaServiceRoleE071F162",
+      "Arn"
+     ]
+    },
+    "Handler": "HelloLambda.lambda_handler",
+    "Runtime": "python3.9",
+    "Tags": [
+     {
+      "Key": "cohort",
+      "Value": "Sirius"
+     },
+     {
+      "Key": "name",
+      "Value": "Maaz Khattak"
+     }
+    ]
+   },
+   "DependsOn": [
+    "HelloLambdaServiceRoleE071F162"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "MaazStack/HelloLambda/Resource",
+    "aws:asset:path": "asset.fa6d09742d44640504c0f5a40c1cc4766831f280b2226e8149cd0a62da988818",
+    "aws:asset:is-bundled": false,
+    "aws:asset:property": "Code"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zWMQQrCMBBFz9J9MkaL7q3gWuoByjSNdUyaQCdBJPTuphVX78/7/DnAUYGq8M1SD1Y66iHfI2oriuqyw6kfEPI1eR0peHF5+H9eBOEEuQ3OrHrlIrjukNlEhvOKckOTtDWxQS71Jsv/kfy4jQyHNOvS3D7xGfyuhr2CU/ViIjknH2ky0P74BTl6bmurAAAA"
+   },
+   "Metadata": {
+    "aws:cdk:path": "MaazStack/CDKMetadata/Default"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,34 @@
+{
+  "version": "21.0.0",
+  "files": {
+    "fa6d09742d44640504c0f5a40c1cc4766831f280b2226e8149cd0a62da988818": {
+      "source": {
+        "path": "asset.fa6d09742d44640504c0f5a40c1cc4766831f280b2226e8149cd0a62da988818",
+        "packaging": "zip"
+      },
+      "destinations": {
+        "315997497220-us-east-2": {
+          "bucketName": "cdk-hnb659fds-assets-315997497220-us-east-2",
+          "objectKey": "fa6d09742d44640504c0f5a40c1cc4766831f280b2226e8149cd0a62da988818.zip",
+          "region": "us-east-2",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::315997497220:role/cdk-hnb659fds-file-publishing-role-315997497220-us-east-2"
+        }
+      }
+    },
+    "369eff9c235db980021d1a205b21365b551490ec250715b3f719ae9a2bbf1223": {
+      "source": {
+        "path": "MaazStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "315997497220-us-east-2": {
+          "bucketName": "cdk-hnb659fds-assets-315997497220-us-east-2",
+          "objectKey": "369eff9c235db980021d1a205b21365b551490ec250715b3f719ae9a2bbf1223.json",
+          "region": "us-east-2",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::315997497220:role/cdk-hnb659fds-file-publishing-role-315997497220-us-east-2"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

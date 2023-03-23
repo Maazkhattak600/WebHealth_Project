@@ -1,0 +1,30 @@
+- config:
+    - testset: "Basic tests"
+    - timeout: 100  # Increase timeout from the default 10 seconds
+- test: 
+    - name: "get test"
+    - url: "/prod/GetUrl/?name=AWS"
+    - method: "GET"
+
+- test: # create entity by POST
+    - name: "POST test"
+    - url: "/prod/postUrl/"
+    - method: "POST"
+    - body: '{""name: "SkipQ","url":https://www.skipq.org/}'
+    - headers: {Content-Type: application/json}
+
+- test: 
+    - name: "Delete test"
+    - url: "/prod/deleteUrl/"
+    - body: '{"name": "SkipQ"}'
+    - method: 'DELETE'
+
+# - test: # create entity by PUT
+#     - name: "update test"
+#     - url: "/prod/updateUrl/"
+#     - method: "PATCH"
+#     - body: '{""name: "SkipQ","url":https://www.skipq.org/}'
+#     - headers: {'Content-Type': 'application/json'}
+   
+
+
